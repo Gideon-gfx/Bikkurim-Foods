@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bikkurim Foods Limited — Premium Fish, Garri &amp; Bread Processing</title>
+<meta name="description" content="Bikkurim Foods Limited: sea-processed fish, garri and bread processing from Badagry, Lagos, Nigeria." />
+<link rel="icon" href="logo.jpeg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="stylesheet" href="style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          burgundy: {
+            950: '#230711',  
+            900: '#380B1A',
+            800: '#591028',
+            700: '#7A1836',
+            600: '#9A2444',
+            500: '#B8355A',
+          },
+          gold: {
+            400: '#C9A15D',
+            300: '#DBBD86',
+          },
+          ivory: '#FBF7F2',
+        },
+        fontFamily: {
+          display: ['Fraunces', 'serif'],
+          body: ['Manrope', 'sans-serif'],
+        },
+        keyframes: {
+          waveA: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
+          waveB: { '0%': { transform: 'translateX(-50%)' }, '100%': { transform: 'translateX(0)' } },
+          rise: {
+            '0%': { transform: 'translateY(0) scale(var(--s,1))', opacity: '0' },
+            '10%': { opacity: '0.55' },
+            '90%': { opacity: '0.35' },
+            '100%': { transform: 'translateY(-115vh) scale(var(--s,1))', opacity: '0' },
+          },
+          fadeUp: {
+            '0%': { opacity: '0', transform: 'translateY(28px)' },
+            '100%': { opacity: '1', transform: 'translateY(0)' },
+          },
+          drift: {
+            '0%,100%': { transform: 'translateY(0px)' },
+            '50%': { transform: 'translateY(-10px)' },
+          },
+        },
+        animation: {
+          'wave-a': 'waveA 16s linear infinite',
+          'wave-b': 'waveB 22s linear infinite',
+          rise: 'rise linear infinite',
+          drift: 'drift 6s ease-in-out infinite',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Manrope', sans-serif; }
+  .font-display { font-family: 'Fraunces', serif; }
+  .logo-top{
+    width: 30px;
+    height: 30px;
+  }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .line-grow { transform: scaleY(0); transform-origin: top; transition: transform 1.1s ease; }
+  .line-grow.is-visible { transform: scaleY(1); }
+  .fade-gallery { background: #FBF7F2; }
+  .fade-img { transition: opacity 1.1s ease; }
+  ::selection { background: #C9A15D; color: #230711; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.2s !important; }
+    .reveal { opacity: 1; transform: none; }
+    .line-grow { transform: scaleY(1); }
+  }
+</style>
+</head>
+<body class="bg-ivory text-burgundy-950 antialiased">
+
+<!-- NAV -->
+<header id="site-nav" class="fixed top-0 inset-x-0 z-50 transition-colors duration-500">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+    <a href="#top" class="flex items-center gap-3 group">
+      <!-- <svg width="34" height="34" viewBox="0 0 32 32" class="shrink-0">
+        <rect width="32" height="32" rx="7" fill="#591028"/>
+        <path d="M6 18c4-6 10-6 14 0-4 6-10 6-14 0z" fill="#C9A15D"/>
+        <circle cx="9" cy="16.5" r="1.1" fill="#591028"/>
+      </svg> -->
+      <img class="logo-top" src="Logo.jpeg" alt="">
+      <span class="font-display text-lg md:text-xl tracking-wide nav-text text-white">BIKKURIM FOODS</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-9 font-body text-sm font-medium tracking-wide nav-text text-white/90">
+      <a href="#products" class="hover:text-gold-400 transition-colors">Products</a>
+      <a href="#process" class="hover:text-gold-400 transition-colors">Process</a>
+      <a href="#about" class="hover:text-gold-400 transition-colors">About</a>
+      <a href="#contact" class="hover:text-gold-400 transition-colors">Contact</a>
+      <a href="#contact" class="px-5 py-2.5 rounded-full bg-gold-400 text-burgundy-950 font-semibold hover:bg-gold-300 transition-colors">Request a Quote</a>
+    </nav>
+    <button id="menu-btn" aria-label="Open menu" aria-expanded="false" class="md:hidden text-white p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 rounded">
+      <svg id="icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg id="icon-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="md:hidden hidden bg-burgundy-950/98 backdrop-blur px-6 pb-6 pt-2 flex flex-col gap-5 font-body text-white/90">
+    <a href="#products" class="mobile-link py-1 hover:text-gold-400">Products</a>
+    <a href="#process" class="mobile-link py-1 hover:text-gold-400">Process</a>
+    <a href="#about" class="mobile-link py-1 hover:text-gold-400">About</a>
+    <a href="#contact" class="mobile-link py-1 hover:text-gold-400">Contact</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative min-h-[100svh] flex items-end bg-gradient-to-b from-burgundy-950 via-burgundy-900 to-burgundy-800 overflow-hidden">
+  <div id="bubbles" class="pointer-events-none absolute inset-0 overflow-hidden"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-40 pb-40 md:pb-48 w-full">
+    <p class="reveal font-body uppercase tracking-[0.3em] text-gold-400 text-xs md:text-sm mb-6">Badagry Coastline · Lagos State, Nigeria</p>
+    <h1 class="reveal font-display text-white text-[2.6rem] leading-[1.08] sm:text-6xl md:text-7xl max-w-4xl" style="text-wrap:balance;">
+      Harvested on the coast. <span class="text-gold-400 italic font-medium">Processed</span> within hours.
+    </h1>
+    <p class="reveal max-w-xl mt-7 text-white/80 text-lg leading-relaxed">
+Bikkurim Foods is a manufacturing facrory, bakery and culinary enterprise focused in processing baking, supplying 
+and providing affordable quality processed Nigerian staples, pasteries, baked goods to the metropolis and surbub of lagos    </p>
+    <div class="reveal mt-10 flex flex-wrap items-center gap-4">
+      <a href="#products" class="px-7 py-3.5 rounded-full bg-gold-400 text-burgundy-950 font-semibold hover:bg-white transition-colors">Explore Our Products</a>
+      <a href="#contact" class="px-7 py-3.5 rounded-full border border-white/30 text-white font-semibold hover:border-gold-400 hover:text-gold-400 transition-colors">Get In Touch</a>
+    </div>
+  </div>
+
+  <!-- animated waves -->
+  <div class="absolute bottom-0 left-0 right-0 h-28 md:h-36 overflow-hidden">
+    <div class="absolute -bottom-1 left-0 flex w-[200%] h-full animate-wave-b opacity-30">
+      <svg class="w-1/2 h-full" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 C150,120 350,0 600,60 C850,120 1050,0 1200,60 L1200,120 L0,120 Z" fill="#C9A15D"></path></svg>
+      <svg class="w-1/2 h-full" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 C150,120 350,0 600,60 C850,120 1050,0 1200,60 L1200,120 L0,120 Z" fill="#C9A15D"></path></svg>
+    </div>
+    <div class="absolute -bottom-1 left-0 flex w-[200%] h-full animate-wave-a">
+      <svg class="w-1/2 h-full" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,80 C200,20 400,110 600,70 C800,30 1000,100 1200,60 L1200,120 L0,120 Z" fill="#FBF7F2"></path></svg>
+      <svg class="w-1/2 h-full" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,80 C200,20 400,110 600,70 C800,30 1000,100 1200,60 L1200,120 L0,120 Z" fill="#FBF7F2"></path></svg>
+    </div>
+  </div>
+</section>
+<!-- carousel -->
+<div id="productCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+    <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+    <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
+    <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
+    <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="8" aria-label="Slide 9"></button>
+    <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="9" aria-label="Slide 10"></button>
+    <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="10" aria-label="Slide 11"></button>
+    <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="11" aria-label="Slide 12"></button>
+    <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="12" aria-label="Slide 13"></button>
+  </div>
+  <div class="carousel-inner" style="max-height: 85vh;">
+    <div class="carousel-item active">
+      <img src="images/Ijebu garri.jpeg" class="d-block w-100 object-contain" style="height: 85vh;" alt="Ijebu Garri">
+    </div>
+    <div class="carousel-item">
+      <img src="images/Poundo yam.jpeg" class="d-block w-100 object-contain" style="height: 85vh;" alt="Poundo Yam">
+    </div>
+    <div class="carousel-item">
+      <img src="images/Yam flour.jpeg" class="d-block w-100 object-contain" style="height: 85vh;" alt="Yam Flour">
+    </div>
+    <div class="carousel-item">
+      <img src="images/Cassava flour.jpeg" class="d-block w-100 object-contain" style="height: 85vh;" alt="Cassava Flour">
+    </div>
+    <div class="carousel-item">
+      <img src="images/crayfish.jpeg" class="d-block w-100 object-contain" style="height: 85vh;" alt="Crayfish">
+    </div>
+    <div class="carousel-item">
+      <img src="images/catfish.jpeg" class="d-block w-100 object-contain" style="height: 85vh;" alt="Catfish">
+    </div>
+    <div class="carousel-item">
+      <img src="images/shawa.jpeg" class="d-block w-100 object-contain" style="height: 85vh;" alt="Shawa Fish">
+    </div>
+    <div class="carousel-item">
+      <img src="images/Tiger prawn.jpeg" class="d-block w-100 object-contain" style="height: 85vh;" alt="Tiger Prawn">
+    </div>
+    <div class="carousel-item">
+      <img src="images/Kilishi.jpeg" class="d-block w-100 object-contain" style="height: 85vh;" alt="Kilishi">
+    </div>
+    <div class="carousel-item">
+      <img src="images/Dried meat.jpeg" class="d-block w-100 object-contain" style="height: 85vh;" alt="Dried Meat">
+    </div>
+    <div class="carousel-item">
+      <img src="images/small fish.jpeg" class="d-block w-100 object-contain" style="height: 85vh;" alt="Small Fish">
+    </div>
+    <div class="carousel-item">
+      <img src="images/Plantain flour.jpeg" class="d-block w-100 object-contain" style="height: 85vh;" alt="Plantain Flour">
+    </div>
+    <div class="carousel-item">
+      <img src="images/Yellow garri.jpeg" class="d-block w-100 object-contain" style="height: 85vh;" alt="Yellow Garri">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!-- PRODUCTS -->
+<section id="products" class="bg-ivory py-24 md:py-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="reveal max-w-2xl mb-16">
+      <p class="uppercase tracking-[0.3em] text-burgundy-700 text-xs md:text-sm font-semibold mb-4">What We Process</p>
+      <h2 class="font-display text-4xl md:text-5xl text-burgundy-950" style="text-wrap:balance;">Four trades, one standard of freshness.</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <div class="reveal group rounded-2xl bg-white border border-burgundy-950/10 p-8 hover:-translate-y-2 hover:shadow-xl hover:shadow-burgundy-950/10 transition-all duration-300">
+        <svg width="40" height="40" viewBox="0 0 40 40" class="mb-6 text-burgundy-800 group-hover:text-gold-400 transition-colors" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M6 22c6-9 14-9 20 0-6 9-14 9-20 0z"/><circle cx="11.5" cy="19.5" r="1.4" fill="currentColor" stroke="none"/><path d="M26 22l8-6v12l-8-6z"/>
+        </svg>
+        <h3 class="font-display text-xl text-burgundy-950 mb-2">Sea-Processed Fish</h3>
+        <p class="text-sm text-burgundy-950/70 leading-relaxed">Daily catch cleaned, smoked or dried, deboned and packaged for market and bulk buyers.</p>
+      </div>
+
+      <div class="reveal group rounded-2xl bg-white border border-burgundy-950/10 p-8 hover:-translate-y-2 hover:shadow-xl hover:shadow-burgundy-950/10 transition-all duration-300" style="transition-delay:.08s">
+        <svg width="40" height="40" viewBox="0 0 40 40" class="mb-6 text-burgundy-800 group-hover:text-gold-400 transition-colors" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M20 6c7 4 11 11 11 18a11 11 0 0 1-22 0c0-7 4-14 11-18z"/><path d="M20 14v18"/>
+        </svg>
+        <h3 class="font-display text-xl text-burgundy-950 mb-2">Garri</h3>
+        <p class="text-sm text-burgundy-950/70 leading-relaxed">Cassava peeled, fermented, fried and graded fine or coarse to order.</p>
+      </div>
+
+      <div class="reveal group rounded-2xl bg-white border border-burgundy-950/10 p-8 hover:-translate-y-2 hover:shadow-xl hover:shadow-burgundy-950/10 transition-all duration-300" style="transition-delay:.16s">
+        <svg width="40" height="40" viewBox="0 0 40 40" class="mb-6 text-burgundy-800 group-hover:text-gold-400 transition-colors" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="7" y="16" width="26" height="15" rx="6"/><path d="M12 16c0-6 4-10 8-10s8 4 8 10"/>
+        </svg>
+        <h3 class="font-display text-xl text-burgundy-950 mb-2">Bread</h3>
+        <p class="text-sm text-burgundy-950/70 leading-relaxed">Baked daily on-site and delivered fresh for retail and wholesale orders.</p>
+      </div>
+
+      <div class="reveal group rounded-2xl bg-white border border-burgundy-950/10 p-8 hover:-translate-y-2 hover:shadow-xl hover:shadow-burgundy-950/10 transition-all duration-300" style="transition-delay:.24s">
+        <svg width="40" height="40" viewBox="0 0 40 40" class="mb-6 text-burgundy-800 group-hover:text-gold-400 transition-colors" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="8" y="17" width="24" height="15" rx="2"/><path d="M8 17l4-9h16l4 9"/><path d="M20 8v9"/>
+        </svg>
+        <h3 class="font-display text-xl text-burgundy-950 mb-2">Small Chops &amp; Treats</h3>
+        <p class="text-sm text-burgundy-950/70 leading-relaxed">Party platters, cakes, drinks and frozen treats made to order for your events.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="catalog" class="bg-ivory pb-24 md:pb-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <!-- Processed Fish -->
+    <div class="mb-20 md:mb-28">
+      <div class="reveal max-w-2xl mb-10">
+        <p class="uppercase tracking-[0.3em] text-burgundy-700 text-xs md:text-sm font-semibold mb-3">Processed Fish</p>
+        <h3 class="font-display text-3xl md:text-4xl text-burgundy-950" style="text-wrap:balance;">Smoked and dried, straight off the coast.</h3>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images/shawa.jpeg" alt="Shawa hot spiced" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Shawa hot spiced (scotch bonnet and chilli)</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Our sumptuous factory-smoked fishes are gut-cleaned and spiced with pepper ready for immediate consumption or preparing your stews, soups and meal garnishes.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images/shawa.jpeg" alt="Fish Shawa - plain" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Fish Shawa - plain</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Our sumptuous factory-smoked fishes are gut-cleaned and plain ready for preparing your stews, soups and meal garnishes.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images/shawa.jpeg" alt="Shawa savoury" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Shawa savoury</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Our sumptuous factory-smoked fishes are gut-cleaned and spiced and basted with our special herbal spice recipe for delectable savoury taste ready for immediate consumption or preparing your stews, soups and meal garnishes.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images/crayfish.jpeg" alt="Crayfish" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Crayfish</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Our sumptuous factory-smoked crayfishes are handpicked, sifted of stones, shafts and other impurities  and spiced to give you quality worth of your money and ready to be directly incorporated into your stews, soups and meal garnishes.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images/Tiger prawn.jpeg" alt="Prawns - Plain" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Prawns - Plain</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Our sumptuous factory-smoked dried prawns are gut-cleaned and plain ready for preparing your stews, soups and meal garnishes.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images/Kilishi.jpeg" alt="Beef Jerky - Kilishi plain" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Beef Jerky - Kilishi plain</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Our tasty factory-dried and smoked beef jerky are salted and mildly seasoned to your satisfaction, be it for immediate consumption or garnishing and cooking in your meals.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images/Dried meat.jpeg" alt="Beef Jerky (seasoned and spiced)" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Beef Jerky (seasoned and spiced)</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Our palate-smacking factory-dried and smoked beef jerky are seasoned nicely with our special labu spice recipe making you crave for more. Pefect for immediate consumption or garnishing and cooking in your meals. Our jerkies are made under quality and strictly hygienic conditions.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images/small fish.jpeg" alt="Mixed finger fishes (eja wewe)" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Mixed finger fishes (eja wewe)</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Our sumptuous factory-smoked fishes are gut-cleaned and plain ready for preparing your stews, soups and meal garnishes.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images/catfish.jpeg" alt="CATFISH (EJA ARO)" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">CATFISH (EJA ARO)</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Our sumptuous factory-smoked fishes are gut-cleaned and plain ready for preparing your stews, soups and meal garnishes.</p>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Garri -->
+    <div class="mb-20 md:mb-28">
+      <div class="reveal max-w-2xl mb-10">
+        <p class="uppercase tracking-[0.3em] text-burgundy-700 text-xs md:text-sm font-semibold mb-3">Garri</p>
+        <h3 class="font-display text-3xl md:text-4xl text-burgundy-950" style="text-wrap:balance;">Garri, flours and dried farm staples.</h3>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images/Ijebu garri.jpeg" alt="Ijebu Garri" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Ijebu Garri</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Our crunchy machine-roasted ijebu garri will have you craving more!</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images/Yellow garri.jpeg" alt="YELLOW GARRI" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">YELLOW GARRI</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Our crunchy machine-roasted YELLOW garri will have you craving more!</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images/Plantain flour.jpeg" alt="Plantain flour" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Plantain flour</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Plantain flour for making plantain fufu made with love and care in quality manufacturing environment!</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images/Cassava flour.jpeg" alt="Cassava Flour" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Cassava Flour</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Cassava flour for making fluffy swallow made with love and care in quality manufacturing environment!</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images/Yam flour.jpeg" alt="Yam Flour" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Yam Flour</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Yam flour for making fluffy amala swallow made with love and care in quality manufacturing environment!</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images/Poundo yam.jpeg" alt="Poundo yam (Iyan)" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Poundo yam (Iyan)</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Made from quality fresh white yams with love and care in an hygienic manufacturing environment!</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images/Cassava flour.jpeg" alt="Cassava Pearls (Tapioca)" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Cassava Pearls (Tapioca)</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Our cassava pearls are made from fresh farm cassava produce manufactured into cassava pearls great for tapioca puddings with milk and shaved coconuts, or asian boba tea, sumptuous for breakfast or dessert!</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images2/Chilli pepper (ata gbigbe).jpeg" alt="Chilli Pepper (Ata Gbigbe)" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Chilli Pepper (Ata Gbigbe)</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Clean sun and machine-dried chilli pepper, processed from freshly harvested quality farm produce.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images2/Chilli pepper powder(ata gigun).jpeg" alt="Chilli Pepper Powder (Ata Gigun)" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Chilli Pepper Powder (Ata Gigun)</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Clean sun and machine-dried chilli pepper powder, processed from freshly cultivated quality farm produce.</p>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Bread & Pastries -->
+    <div class="mb-20 md:mb-28">
+      <div class="reveal max-w-2xl mb-10">
+        <p class="uppercase tracking-[0.3em] text-burgundy-700 text-xs md:text-sm font-semibold mb-3">Bread &amp; Pastries</p>
+        <h3 class="font-display text-3xl md:text-4xl text-burgundy-950" style="text-wrap:balance;">Baked fresh, boxed for every occasion.</h3>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <div class="fade-gallery relative w-full rounded-2xl overflow-hidden h-[200px] md:h-[250px]">
+              <img src="images2/cakes&pasteries.jpeg" alt="Cakes and Pastries" class="fade-img absolute inset-0 w-full h-full object-contain opacity-100" />
+              <img src="images2/cake and pasteries pack.jpeg" alt="Cakes and Pastries, packaged" class="fade-img absolute inset-0 w-full h-full object-cover opacity-0" />
+              <img src="images2/cake & pasteries transparent pack.jpeg" alt="Cakes and Pastries in resealable pack" class="fade-img absolute inset-0 w-full h-full object-cover opacity-0" />
+            </div>
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Cakes &amp; Pastries</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Cakes, cookies, croissants, foil cakes, muffins, cupcakes, meat/chicken/fish pies, doughnuts (glazed, pillow, sugar &amp; jam), buns, chin chin, pancakes, scotch eggs, corn dogs, banana/coconut/fruit/butter/sardine bread, bread rolls, cinnamon rolls, sausage rolls, french fries, churros, popcorn, burgers, shawarma and more. Available upon pre-order — contact us for details.</p>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Small Chops, Drinks & Frozen Treats -->
+    <div>
+      <div class="reveal max-w-2xl mb-10">
+        <p class="uppercase tracking-[0.3em] text-burgundy-700 text-xs md:text-sm font-semibold mb-3">Small Chops &amp; Treats</p>
+        <h3 class="font-display text-3xl md:text-4xl text-burgundy-950" style="text-wrap:balance;">For your next event or evening treat.</h3>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <div class="fade-gallery relative w-full rounded-2xl overflow-hidden h-[200px] md:h-[250px]">
+              <img src="images2/small chop package.jpeg" alt="Small Chops - Platter Box, open" class="fade-img absolute inset-0 w-full h-full object-cover opacity-100" />
+              <img src="images2/closed small chops package.jpeg" alt="Small Chops - Platter Box, sealed" class="fade-img absolute inset-0 w-full h-full object-cover opacity-0" />
+            </div>
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Small Chops – Platter Box</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Delightful platter boxes of small chops, great for events, birthdays and family get-togethers — made under careful and hygienic conditions. Includes puff puff, samosas, spring rolls, mosa, chicken bbq, spiced beef, plantain and dip sauces. Available upon pre-order — contact us for details.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <div class="fade-gallery relative w-full rounded-2xl overflow-hidden h-[200px] md:h-[250px]">
+              <img src="images2/mini small chops.jpeg" alt="Small Chops - Special Treat Mini Box, open" class="fade-img absolute inset-0 w-full h-full object-cover opacity-100" />
+              <img src="images2/small chops white carton.jpeg" alt="Small Chops - Special Treat Mini Box, sealed" class="fade-img absolute inset-0 w-full h-full object-cover opacity-0" />
+            </div>
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Small Chops – Special Treat Mini Box</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Treat yourself and loved ones to our special mini boxes of small chops, perfect for events, birthdays and family get-togethers — made under careful and hygienic conditions. Includes 5 puff puffs, 1 samosa, 1 spring roll, 1 mosa, 1 chicken bbq, 1 spiced beef, 3 plantain balls and dip sauce. Available upon pre-order — contact us for details.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images2/Drinks and smoothies.jpeg" alt="Drinks and Smoothies" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Drinks &amp; Smoothies</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Refreshing drinks and soothing smoothies — mocktails, cocktails, pops, slushies, zobo (hibiscus drink), punch, lemonade, iced tea, and banana, mango, kiwi &amp; pineapple smoothies, milkshakes and more. Available upon pre-order — contact us for details.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://chowdeck.com/store/alagomeji/supermarkets/bikkurim-foods-limitedalagomejica59sm" target="_blank" rel="noopener noreferrer">
+          <div class="reveal group flex flex-col">
+            <img src="images2/Ice cream,popsicles& gelatos.jpeg" alt="Ice Creams, Popsicles and Gelatos" class="w-full rounded-2xl object-contain h-[200px] md:h-[250px]" />
+            <div class="mt-4">
+              <h4 class="font-display text-xl text-burgundy-950">Ice Creams, Popsicles &amp; Gelatos</h4>
+              <p class="text-sm text-burgundy-950/70 leading-relaxed mt-2">Creamy ice creams, popsicles and gelatos in vanilla, strawberry, chocolate, watermelon, banana, mango, kiwi and pineapple, with peanut, whipped frosty cream, chocolate chips &amp; dips and colourful sweet toppings. Available upon pre-order — contact us for details.</p>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- PROCESS -->
+<section id="process" class="bg-burgundy-950 py-24 md:py-32 relative overflow-hidden">
+  <div class="max-w-5xl mx-auto px-6 lg:px-10 relative">
+    <div class="reveal max-w-2xl mb-20">
+      <p class="uppercase tracking-[0.3em] text-gold-400 text-xs md:text-sm font-semibold mb-4">How It Moves</p>
+      <h2 class="font-display text-4xl md:text-5xl text-white" style="text-wrap:balance;">From coast and farm to crate, same day.</h2>
+    </div>
+
+    <div class="relative pl-10 md:pl-14">
+      <div class="line-grow absolute left-[11px] md:left-[15px] top-2 bottom-2 w-px bg-gradient-to-b from-gold-400 via-white/30 to-transparent"></div>
+
+      <div class="reveal relative mb-14 last:mb-0">
+        <span class="absolute -left-10 md:-left-14 top-0 w-6 h-6 rounded-full bg-gold-400 flex items-center justify-center"></span>
+        <p class="uppercase tracking-[0.2em] text-gold-400 text-xs font-semibold mb-2">01 — Sourcing</p>
+        <h3 class="font-display text-2xl text-white mb-2">Landed and gathered fresh</h3>
+        <p class="text-white/70 max-w-xl leading-relaxed">Fish landed daily along Badagry's coastline; cassava and produce brought in from partner farms across the region.</p>
+      </div>
+
+      <div class="reveal relative mb-14 last:mb-0">
+        <span class="absolute -left-10 md:-left-14 top-0 w-6 h-6 rounded-full bg-gold-400 flex items-center justify-center"></span>
+        <p class="uppercase tracking-[0.2em] text-gold-400 text-xs font-semibold mb-2">02 — Processing</p>
+        <h3 class="font-display text-2xl text-white mb-2">Cleaned, smoked, fried or baked</h3>
+        <p class="text-white/70 max-w-xl leading-relaxed">Each line is handled to its own standard — fish cleaned and smoked, cassava fermented into garri, dough baked into bread.</p>
+      </div>
+
+      <div class="reveal relative mb-14 last:mb-0">
+        <span class="absolute -left-10 md:-left-14 top-0 w-6 h-6 rounded-full bg-gold-400 flex items-center justify-center"></span>
+        <p class="uppercase tracking-[0.2em] text-gold-400 text-xs font-semibold mb-2">03 — Quality Check</p>
+        <h3 class="font-display text-2xl text-white mb-2">Inspected before it leaves</h3>
+        <p class="text-white/70 max-w-xl leading-relaxed">Every batch is checked for freshness, hygiene and grade ahead of packaging.</p>
+      </div>
+
+      <div class="reveal relative">
+        <span class="absolute -left-10 md:-left-14 top-0 w-6 h-6 rounded-full bg-gold-400 flex items-center justify-center"></span>
+        <p class="uppercase tracking-[0.2em] text-gold-400 text-xs font-semibold mb-2">04 — Dispatch</p>
+        <h3 class="font-display text-2xl text-white mb-2">Sealed, packed and moved out</h3>
+        <p class="text-white/70 max-w-xl leading-relaxed">Orders are packaged and dispatched to markets and bulk buyers across Lagos and beyond.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="bg-ivory py-24 md:py-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
+    <div class="reveal">
+      <p class="uppercase tracking-[0.3em] text-burgundy-700 text-xs md:text-sm font-semibold mb-4">Our Roots</p>
+      <h2 class="font-display text-4xl md:text-5xl text-burgundy-950 mb-6" style="text-wrap:balance;">Rooted in Badagry, built for Lagos.</h2>
+      <p class="text-burgundy-950/75 leading-relaxed mb-5">
+        Badagry's coastline has fed Lagos for generations — fishing crews at dawn, cassava fields inland, bread ovens running through the night. Bikkurim Foods Limited was built inside that rhythm, not apart from it.
+      </p>
+      <p class="text-burgundy-950/75 leading-relaxed">
+        We run fish, garri, bread and produce through one facility at 1-3 Isamole Road, off Oko Afo – Agunmo Road, so what's landed or harvested in the morning can be processed, checked and dispatched the same day.
+      </p>
+    </div>
+    <div class="reveal grid grid-cols-2 gap-5">
+      <div class="rounded-2xl bg-burgundy-950 text-white p-7 animate-drift">
+        <p class="font-display text-2xl mb-1">Fish</p>
+        <p class="text-white/60 text-sm">Smoked &amp; dried, daily</p>
+      </div>
+      <div class="rounded-2xl bg-white border border-burgundy-950/10 p-7 mt-8 animate-drift" style="animation-delay:1.2s">
+        <p class="font-display text-2xl mb-1 text-burgundy-950">Garri</p>
+        <p class="text-burgundy-950/60 text-sm">Fine &amp; coarse grades</p>
+      </div>
+      <div class="rounded-2xl bg-white border border-burgundy-950/10 p-7 -mt-8 animate-drift" style="animation-delay:.6s">
+        <p class="font-display text-2xl mb-1 text-burgundy-950">Bread</p>
+        <p class="text-burgundy-950/60 text-sm">Baked fresh on-site</p>
+      </div>
+      <div class="rounded-2xl bg-gold-400 text-burgundy-950 p-7 animate-drift" style="animation-delay:1.8s">
+        <p class="font-display text-2xl mb-1">Treats</p>
+        <p class="text-burgundy-950/70 text-sm">Small chops &amp; cakes</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="bg-burgundy-950 py-24 md:py-32 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-16">
+
+    <div class="reveal">
+      <p class="uppercase tracking-[0.3em] text-gold-400 text-xs md:text-sm font-semibold mb-4">Get In Touch</p>
+      <h2 class="font-display text-4xl md:text-5xl text-white mb-8" style="text-wrap:balance;">Place an order or ask us anything.</h2>
+
+      <ul class="space-y-6 font-body text-white/85">
+        <li class="flex gap-4">
+          <svg class="shrink-0 mt-0.5" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A15D" stroke-width="1.8"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span>1-3 Isamole Road, off Oko Afo – Agunmo Road,<br/>Badagry, Lagos, Nigeria</span>
+        </li>
+        <li class="flex gap-4 items-center">
+          <svg class="shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A15D" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          <span class="flex flex-col">
+            <!-- <a href="mailto:bikkurimfoods@outlook.com" class="hover:text-gold-400 transition-colors">bikkurimfoods@outlook.com</a> -->
+            <a href="mailto:bikkurimfoods@gmail.com" class="hover:text-gold-400 transition-colors">bikkurimfoods@gmail.com</a>
+          </span>
+        </li>
+        <li class="flex gap-4 items-center">
+          <svg class="shrink-0" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A15D" stroke-width="1.8"><path d="M4 5c0 8.8 6.2 15 15 15l2-4-5-2-2 2c-2-1-4-3-5-5l2-2-2-5-4 1z"/></svg>
+          <a href="tel:+2349114624095" class="hover:text-gold-400 transition-colors">+234 911 462 4095 <span class="text-white/50">(Calls · WhatsApp · Messages)</span></a>
+        </li>
+      </ul>
+
+      <a href="https://wa.me/2349114624095" target="_blank" rel="noopener" class="mt-9 inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gold-400 text-burgundy-950 font-semibold hover:bg-white transition-colors">
+        Message us on WhatsApp
+      </a>
+    </div>
+
+    <form id="inquiry-form" class="reveal bg-white/[0.04] border border-white/10 rounded-2xl p-8 space-y-5">
+      <div>
+        <label for="f-name" class="block text-xs uppercase tracking-[0.2em] text-white/60 mb-2">Name</label>
+        <input id="f-name" name="name" type="text" required class="w-full rounded-lg bg-white/5 border border-white/15 px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-gold-400 focus-visible:ring-2 focus-visible:ring-gold-400" placeholder="Your name" />
+      </div>
+      <div>
+        <label for="f-company" class="block text-xs uppercase tracking-[0.2em] text-white/60 mb-2">Company (optional)</label>
+        <input id="f-company" name="company" type="text" class="w-full rounded-lg bg-white/5 border border-white/15 px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-gold-400 focus-visible:ring-2 focus-visible:ring-gold-400" placeholder="Business or market name" />
+      </div>
+      <div>
+        <label for="f-product" class="block text-xs uppercase tracking-[0.2em] text-white/60 mb-2">Interested In</label>
+        <select id="f-product" name="product" class="w-full rounded-lg bg-white/5 border border-white/15 px-4 py-3 text-white focus:outline-none focus:border-gold-400 focus-visible:ring-2 focus-visible:ring-gold-400">
+          <option class="text-burgundy-950">Sea-Processed Fish</option>
+          <option class="text-burgundy-950">Garri</option>
+          <option class="text-burgundy-950">Bread &amp; Pastries</option>
+          <option class="text-burgundy-950">Small Chops &amp; Catering</option>
+          <option class="text-burgundy-950">General Inquiry</option>
+        </select>
+      </div>
+      <div>
+        <label for="f-message" class="block text-xs uppercase tracking-[0.2em] text-white/60 mb-2">Message</label>
+        <textarea id="f-message" name="message" rows="4" required class="w-full rounded-lg bg-white/5 border border-white/15 px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-gold-400 focus-visible:ring-2 focus-visible:ring-gold-400" placeholder="Quantities, delivery location, timing…"></textarea>
+      </div>
+      <button type="submit" class="w-full py-3.5 rounded-lg bg-gold-400 text-burgundy-950 font-semibold hover:bg-white transition-colors">Send Inquiry</button>
+      <p id="form-note" class="text-xs text-white/40 text-center pt-1">Opens your email app addressed to bikkurimfoods@gmail.com</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-burgundy-950 border-t border-white/10 py-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-6 text-white/50 text-sm">
+    <div class="flex items-center gap-3">
+      <svg width="24" height="24" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#C9A15D"/><path d="M6 18c4-6 10-6 14 0-4 6-10 6-14 0z" fill="#230711"/></svg>
+      <span class="font-display text-white/80">Bikkurim Foods Limited</span>
+    </div>
+    <div class="flex items-center gap-5">
+      <a href="https://www.tiktok.com/@bikkurimfoods?_r=1&amp;_t=ZS-98CEHd3S7U5" target="_blank" rel="noopener noreferrer" aria-label="Bikkurim Foods on TikTok" class="text-white/60 hover:text-gold-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 rounded">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.4 2.3 2 3.9 4.3 4.2v3c-1.6 0-3-.5-4.3-1.4v6.7a5.5 5.5 0 1 1-5.5-5.5c.3 0 .6 0 .9.1v3.1a2.4 2.4 0 1 0 1.7 2.3V3h2.9z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/bikkurim_foods?igsh=ZDhxaGd2NDh2NjRj" target="_blank" rel="noopener noreferrer" aria-label="Bikkurim Foods on Instagram" class="text-white/60 hover:text-gold-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 rounded">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.facebook.com/share/18zerzE9QE/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Bikkurim Foods on Facebook" class="text-white/60 hover:text-gold-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 rounded">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V5h-3c-2.2 0-4 1.8-4 4v2H7v4h3v7h4v-7h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg>
+      </a>
+    </div>
+    <p>&copy; <span id="year"></span> Bikkurim Foods Limited · Badagry, Lagos, Nigeria</p>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script><script>
+  // Sticky nav background on scroll
+  const nav = document.getElementById('site-nav');
+  const onScroll = () => {
+    if (window.scrollY > 60) {
+      nav.classList.add('bg-burgundy-950/95', 'backdrop-blur', 'shadow-lg', 'shadow-black/20');
+    } else {
+      nav.classList.remove('bg-burgundy-950/95', 'backdrop-blur', 'shadow-lg', 'shadow-black/20');
+    }
+  };
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+  menuBtn.addEventListener('click', () => {
+    const isOpen = !mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', String(!isOpen));
+  });
+  document.querySelectorAll('.mobile-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Scroll reveal
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal, .line-grow').forEach((el) => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal, .line-grow').forEach((el) => el.classList.add('is-visible'));
+  }
+
+  // Rising bubbles in hero
+  if (!reduceMotion) {
+    const bubbleField = document.getElementById('bubbles');
+    const bubbleCount = 16;
+    for (let i = 0; i < bubbleCount; i++) {
+      const b = document.createElement('span');
+      const size = 4 + Math.random() * 10;
+      const left = Math.random() * 100;
+      const duration = 9 + Math.random() * 10;
+      const delay = Math.random() * 12;
+      b.style.position = 'absolute';
+      b.style.bottom = '-40px';
+      b.style.left = left + '%';
+      b.style.width = size + 'px';
+      b.style.height = size + 'px';
+      b.style.borderRadius = '9999px';
+      b.style.background = 'rgba(201,161,93,0.35)';
+      b.style.setProperty('--s', (0.6 + Math.random() * 0.8).toFixed(2));
+      b.style.animation = `rise ${duration}s linear ${delay}s infinite`;
+      bubbleField.appendChild(b);
+    }
+  }
+
+  // Auto-crossfade product image galleries (open box / sealed pack)
+  if (!reduceMotion) {
+    document.querySelectorAll('.fade-gallery').forEach((gallery) => {
+      const imgs = gallery.querySelectorAll('.fade-img');
+      if (imgs.length < 2) return;
+      let idx = 0;
+      const startDelay = Math.random() * 2000;
+      setTimeout(() => {
+        setInterval(() => {
+          imgs[idx].classList.remove('opacity-100');
+          imgs[idx].classList.add('opacity-0');
+          idx = (idx + 1) % imgs.length;
+          imgs[idx].classList.remove('opacity-0');
+          imgs[idx].classList.add('opacity-100');
+        }, 3800);
+      }, startDelay);
+    });
+  }
+
+  // Inquiry form -> mailto
+  const form = document.getElementById('inquiry-form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const name = data.get('name') || '';
+    const company = data.get('company') || '';
+    const product = data.get('product') || '';
+    const message = data.get('message') || '';
+    const subject = encodeURIComponent(`Inquiry: ${product} — ${name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nCompany: ${company}\nInterested In: ${product}\n\nMessage:\n${message}`
+    );
+    window.location.href = `mailto:bikkurimfoods@gmail.com?subject=${subject}&body=${body}`;
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
